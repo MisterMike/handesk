@@ -11,29 +11,28 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "ext-imap": "*",
+        "php": "^7.2|^8.0",
         "badchoice/hurricane": "^1.0",
-        "badchoice/thrust": "^0.4.1",
-        "drewm/mailchimp-api": "^2.4",
-        "fideloper/proxy": "4.0",
-        "fzaninotto/faker": "^1.4",
-        "gentle/bitbucket-api": "dev-develop",
-        "guzzlehttp/guzzle": "^6.3",
-        "guzzlehttp/oauth-subscriber": "^0.3",
-        "khill/fontawesomephp": "^1.0",
-        "laravel/framework": "5.8.*",
+        "badchoice/thrust": "^0.5.1",
+        "drewm/mailchimp-api": "^2.5",
+        "fakerphp/faker": "^1.13.0",
+        "fideloper/proxy": "4.4.1",
+        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/oauth-subscriber": "^0.5",
+        "khill/fontawesomephp": "^2.0",
+        "laravel/framework": "^7.30",
         "laravel/slack-notification-channel": "^2.0",
-        "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.8",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^2.4",
+        "laravelcollective/html": "^6.3",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "patrickschur/language-detection": "^3.2",
-        "php-imap/php-imap": "^2.0",
+        "patrickschur/language-detection": "^5.2",
+        "php-imap/php-imap": "^4.5",
         "predis/predis": "^1.1"
     },
     "require-dev": {
-        "mockery/mockery": "^1.2",
-        "phpunit/phpunit": "^7.0"
+        "mockery/mockery": "^1.5",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "classmap": [

@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Support\Str;
 use App\Authenticatable\Admin;
 use App\Authenticatable\Assistant;
 use App\Events\TicketCommented;
@@ -15,6 +15,7 @@ use App\Services\TicketLanguageDetector;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
+
 
 class Ticket extends BaseModel
 {
@@ -39,7 +40,7 @@ class Ticket extends BaseModel
         $ticket    = $requester->tickets()->create([
             'title'        => substr($title, 0, 190),
             'body'         => $body,
-            'public_token' => str_random(24),
+            'public_token' => Str::random(24),
             'team_id'      => Settings::defaultTeamId(),
         ])->attachTags($tags);
         tap(new TicketCreated($ticket), function ($newTicketNotification) use ($requester, $ticket) {
