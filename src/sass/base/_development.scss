@@ -1,0 +1,30 @@
+///////////////////////////////
+// DEVELOPMENT AIDES
+///////////////////////////////
+
+body.development:before {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  padding: 0 3px;
+  background: lighten($brand-primary, 20%);
+  font-size: .5rem;
+  font-family: monospace;
+  content: 'media:tiny';
+
+  @include make-breakpoints-names();
+
+}
+
+
+body.development .tpl-data {
+  position: fixed;
+  z-index: 99998;
+  top: 0;
+  padding: 0 3px;
+  background: lighten($brand-secondary, 20%);
+  font-size: .5rem;
+  color: $white;
+  font-family: monospace;
+}

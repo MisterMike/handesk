@@ -1,0 +1,124 @@
+///////////////////////////////
+// MAIN LAYOUT SETTINGS
+//////////////////////////////
+
+
+body {
+    height: 100%;
+    overflow-y: scroll;
+
+    &.nav-is-open {
+        overflow: hidden !important;
+    }
+    &.allow-overflow .main {
+        overflow-x: visible !important;
+    }
+}
+
+// Global Width Container
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $container-padding-x;
+    padding-right: $container-padding-x;
+
+    @include make-container-max-widths();
+
+    @include mq(for-desktop){
+        padding: 0
+    }
+}
+
+.container-wide {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $container-padding-x;
+    padding-right: $container-padding-x;
+
+    max-width: 1800px;
+
+    @include mq(for-desktop){
+        padding: 0
+    }
+
+    //@include make-container-max-widths();
+}
+
+.container-narrow {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $container-padding-x;
+    padding-right: $container-padding-x;
+
+    max-width: 650px;
+
+    @include mq(for-desktop){
+        padding: 0
+    }
+
+    //@include make-container-max-widths();
+}
+
+// detail page layout (entry type)
+
+body.detail div.content--padding:not(.hero):not(.illustration) div.container {
+    max-width: 720px;
+}
+
+// Default Layout
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    position: relative;
+    z-index: 1;
+
+    .header,
+    .footer {
+        flex: none;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        //overflow-x: hidden; // removed for sticky hero
+
+        &::after {
+            content: '';
+            display: block;
+            height: 0px;
+            visibility: hidden;
+        }
+
+    }
+}
+
+main.main {
+    padding-top: 80px;
+}
+
+article {
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+section > .content--padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    @include mq(for-tablet-landscape){
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+section > .content--padding.ueberschrift + .content--padding {
+    padding-top: 0;
+}

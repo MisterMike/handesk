@@ -1,0 +1,249 @@
+///////////////////////////////
+// ANIMATION SETTINGS
+//////////////////////////////
+
+
+body:not(.preview) .animation-planned {
+    opacity: 0;
+}
+
+body:not(.preview) .animation-load {
+    animation: animate-load .5s ease-in-out;
+}
+
+body:not(.preview) .animation-scroll {
+    animation: animate-scroll .5s ease-in-out;
+}
+
+@keyframes fullOpacity{
+    0%{
+        opacity:0;
+        isibility:hidden
+    }
+    100%{
+        opacity:1;
+        visibility:visible
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes highlight {
+    from {
+        background-color: rgba($brand-primary-light, 1);
+    }
+
+    to {
+        background-color: rgba($brand-primary-light, 0);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.08, 1.08, 1.08);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.u-pulse {
+    animation-duration: 0.5s;
+    animation-name: pulse;
+    animation-timing-function: $animation-curve-default;
+    animation-fill-mode: both;
+}
+
+@keyframes animate-scroll {
+    0% {
+        opacity: 0;
+        transform:translateY(50px)
+    }
+
+    100% {
+        opacity: 1;
+        transform:translateY(0)
+    }
+}
+
+
+@keyframes animate-load {
+    0% {
+        opacity: 0;
+        transform:translateY(-50px)
+    }
+
+    100% {
+        opacity: 1;
+        transform:translateY(0)
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+}
+
+@keyframes fade-in {
+    from {
+        opacity:0
+    }
+
+    to {
+        opacity:1
+    }
+}
+
+@keyframes fade-in-delay {
+    0% {
+        opacity:0
+    }
+
+    33% {
+        opacity:0
+    }
+
+    100% {
+        opacity:1
+    }
+}
+
+@keyframes scale-right {
+    0% {
+        transform:scaleX(0)
+    }
+
+    100% {
+        transform:scaleX(1)
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform:translateX(0)
+    }
+
+    50% {
+        transform:translateX(1rem)
+    }
+
+    100% {
+        transform:translateX(0)
+    }
+}
+
+@keyframes push-in {
+    0% {
+        opacity: 0;
+        transform:translateX(-30%)
+    }
+
+    60% {
+        opacity: 1;
+        transform:translateX(2%)
+    }
+
+    100% {
+        opacity: 1;
+        transform:translateX(0)
+    }
+}
+
+@keyframes push-in-right {
+    0% {
+        opacity: 0;
+        transform:translateX(100%)
+    }
+
+    60% {
+        opacity: 1;
+        transform:translateX(-6%)
+    }
+
+    100% {
+        opacity: 1;
+        transform:translateX(0)
+    }
+}
+
+@keyframes push-out {
+    0% {
+        opacity: 1;
+        transform:translateX(0)
+    }
+
+    60% {
+        opacity: 0;
+        transform:translateX(32%)
+    }
+
+    100% {
+        opacity: 0;
+        transform:translateX(30%)
+    }
+}
+
+.fade-in-left,
+.fade-in-right,
+.fade-in-up {
+    opacity: 0;
+    transition:opacity 1s ease, transform .5s ease
+}
+
+/* table__scroll--icon */
+
+@keyframes badgeScroll {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(70px);
+    }
+}
+
+@keyframes badgeHide {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100%, 40%, 60%  {
+        transform:translateY(0)
+    }
+
+    90% {
+        transform:translateY(30px)
+    }
+
+    //75% {
+    //  transform:translateY(-15px)
+    //}
+}

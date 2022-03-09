@@ -1,0 +1,159 @@
+//--------------------
+// SCSS VARIABLES
+//--------------------
+
+// Root element font size (aka master font size)
+$font-size-base: 16px;
+
+//
+// Media breakpoints
+//
+
+$grid-breakpoints: (
+  for-small-phones: 361px,
+  for-phone-only: 599px,
+  for-tablet-portrait: 600px,
+  for-tablet-landscape: 900px,
+  for-desktop: 1200px,
+  for-medium-desktop: 1500px,
+  for-big-desktop: 1800px
+);
+
+// -> use as @include mq(for-desktop) {css code}
+
+//
+// Container widths
+//
+
+// was 752px,960px,1264px for md,lg,xl
+
+$container-max-widths: (
+    for-tablet-landscape: 54rem, //864 of 900
+    for-desktop: 70rem, //1024 of 1200
+    for-medium-desktop: 85rem, //1184 of 1500
+    for-big-desktop:  104rem //1440 of 1800
+);
+
+$container-narrow-max-width: 800px;
+
+$container-padding-x: 1rem;
+
+$padding-mobile: 20px;
+$padding-tablet: 40px;
+$padding-desktop: 80px;
+
+// spacing definitions
+
+$base-spacing: 3rem;
+$base-spacing-mobile: 1.5rem;
+$padding-container: $base-spacing * 1.6;
+$padding-container-small: $base-spacing-mobile * 1.6;
+
+
+//
+// z-Index Stack
+//
+
+$z-layers: (
+    'header': 700,
+    'messages': 600,
+    'modal': 500,
+    'mobile-nav': 150,
+    'mobile-menu': 100,
+    'content-overlay': 25
+);
+
+//
+// Links
+//
+
+$link-color: $brand-primary;
+$link-hover-color: $brand-primary-dark;
+
+//
+// Body
+//
+
+$body-bg: $white;
+$body-color: $black;
+
+//
+// Typography
+//
+
+// System Font for performance. 
+// If we can use a font already available on the user’s machine, we can completely 
+// eliminate the need to fetch these large font resources, making load times noticeably faster.
+
+$font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+$font-family-heading: 'Gilroy', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+$font-family-display: 'Plain', Helvetica, Arial, sans-serif;
+
+$font-family-body: 'Plain', Helvetica, Arial, sans-serif;
+
+$font-family-base: $font-family-body;
+$font-color-base: $black;
+$line-height-base: 1.5;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$icon-size: 1.4rem;
+$icon-color: $white;
+
+
+//
+// Animation timings
+//
+
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1);
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
+$animation-curve-default: $animation-curve-fast-out-slow-in;
+
+$animation-base-duration: .3s;
+$animation-base-timing: $animation-curve-fast-out-slow-in;
+
+//
+// Misc Shared
+//
+
+$border-radius: 0.25rem;
+
+$header-height-sm: 64px;
+$header-height-md: 80px;
+
+$bottom-nav-height: 56px;
+
+//
+// Shadows
+//
+
+$shadow-100-sm: 0px 2px 2px -2px rgba(0, 0, 0, 0.12),
+                0px 2px 4px rgba($gray-600, 0.12);
+
+$shadow-200-sm: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+$shadow-300-sm: 0px 12px 12px -12px rgba($gray-600, 0.16),
+                0px 8px 16px rgba($gray-600, 0.2);
+
+$shadow-400-sm: 0px 12px 12px -12px rgba($gray-600, 0.24),
+                0px 12px 20px rgba($gray-600, 0.28);
+
+$shadow-100-lg: 0px 2px 2px -2px rgba(0, 0, 0, 0.12),
+                0px 2px 4px rgba($gray-600, 0.12);
+
+$shadow-200-lg: 0px 12px 12px -12px rgba($gray-600, 0.12),
+                0px 8px 16px rgba($gray-600, 0.16);
+
+$shadow-300-lg: 0px 16px 16px -16px rgba($gray-600, 0.16),
+                0px 16px 32px rgba($gray-600, 0.2);
+$shadow-400-lg: 0px 24px 20px -20px rgba($gray-600, 0.24),
+                0px 24px 32px rgba($gray-600, 0.28);
+

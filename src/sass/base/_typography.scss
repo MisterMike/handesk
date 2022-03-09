@@ -1,0 +1,84 @@
+// Main Typography Styles
+
+h1, .h1 {
+    font-family: $font-family-display;
+    font-size: 3rem;
+    line-height: 1.1;
+    font-weight: $font-weight-bold;
+
+    @include mq(for-tablet-landscape) {
+        font-size: 3.5rem;
+    }
+
+    @include mq(for-big-desktop) {
+        font-size: 3.75rem;
+    }
+}
+
+h2, .h2 {
+    color: $gray-500;
+    font-size: var(--font-size-headline-l);
+    font-weight: $font-weight-normal;
+    line-height: 1.25;
+}
+
+h3, .h3 {
+    font-size: var(--font-size-headline-m);
+    font-weight: $font-weight-normal;
+    line-height: 1.25;
+}
+
+h4, .h4 {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    color: $brand-dark-200;
+    letter-spacing: 1px;
+    margin-bottom: .5rem;
+}
+
+h5, .h5 {
+    color: $gray-500;
+    text-transform: uppercase;
+    font-size: .875rem;
+    font-weight: $font-weight-light;
+    letter-spacing: 1px;
+}
+
+// Lead Paragraph
+
+.lead {
+    font-size: var(--font-size-copy-l);
+    line-height: 1.6;
+}
+
+.pretitle {
+    font-size: 0.875rem; //14px
+    font-weight: 700;
+    font-family: $font-family-display;
+    line-height: 1.7142; //24px
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.25;
+    color: $black;
+    margin-top: 1.5rem;
+
+    @include mq(for-tablet-landscape) {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        margin-top: 2rem;
+    }
+}
+
+// Hyphenation
+
+.hyphenate {
+    @include hyphenate;
+}
+
+// Truncation
+
+.truncate {
+    @include truncate;
+}

@@ -1,0 +1,28 @@
+:root {
+    // Font Sizes
+    --font-size-headline-xl: 2.125rem; //34px
+    --font-size-headline-l: 1.875rem; //30px
+    --font-size-headline-m: 1.75rem; //28px
+    --font-size-headline-s: 1.5rem; //24px
+    --font-size-headline-xs: 1.125rem; //18px
+    --font-size-headline-xxs: 1rem; //16px
+
+    --font-size-copy-xl: 1.4rem; //18px
+    --font-size-copy-l: 1.25rem; //18px
+    --font-size-copy-s: 0.875rem; //14px
+
+    // Shadows
+    --shadow-100: #{$shadow-100-sm};
+    --shadow-200: #{$shadow-200-sm};
+    --shadow-300: #{$shadow-300-sm};
+    --shadow-400: #{$shadow-400-sm};
+
+    // Diagonals
+    --diagonal-height: 184px;
+
+    // IOS Safe Area Insets
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+
+    --primaryColor: #{$brand-primary}; 
+    --secondaryColor:#{$brand-secondary};
+}

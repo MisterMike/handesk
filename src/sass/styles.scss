@@ -1,0 +1,42 @@
+@use "sass:math";
+@use "sass:color";
+
+@import
+
+  "utils/colors",
+  "utils/variables",
+  "utils/functions",
+  "mixins/mixins",
+
+  // base configuration
+  "base/fonts",
+  "base/normalize",
+  "base/reboot",
+  "base/properties",
+  "base/layout",
+  "base/typography",
+  "base/focus",
+  "base/animations",
+  "base/screenreader",
+  "base/development",
+  "base/utilities",
+
+  // page elements
+  "elements/header",
+  "elements/navigation",
+  "elements/navigation-mobile",
+  "elements/footer",
+
+  // components
+  "components/button",
+  "components/hero",
+  "components/illustration",
+  "components/imageText",
+  "components/teaser",
+
+  // pages and views
+    "pages/patentlist",
+
+  // utility classes
+    "utils/utilities"
+;

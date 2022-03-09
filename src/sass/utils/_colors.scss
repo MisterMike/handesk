@@ -1,0 +1,55 @@
+$white: #ffffff;
+$black: #444444;
+
+//
+// Gray scales
+//
+
+$gray-500: #1f1f1f;
+$gray-600: #4e5464;
+$gray-400: #999999;
+$gray-300: #cacaca;
+$gray-200: #f2f3f6;
+$gray-100: #f9f9f9;
+
+
+//
+// Brand Color Stacks
+//
+$brand-dark-000: #313644;
+$brand-dark-100: #2d2e39;
+$brand-dark-200: #292631;
+
+$brand-beige-100: #f7f6ed;
+
+$brand-yellow-000: #ffde54;
+$brand-yellow-100: #f6ca38;
+$brand-yellow-200: #e9aa09;
+
+$brand-purple-000: #7339a8;
+$brand-purple-100: #592c82;
+$brand-purple-200: #532572;
+
+
+// Notification state colors
+
+$state-success: #468c00;
+$state-info: $brand-purple-100; // #17a1e6
+$state-warning: #df8a13;
+$state-error: #b91c1c;
+
+
+//
+// Color Mappings
+//
+
+$color-text: $gray-600;
+
+$brand-primary: $brand-yellow-100;
+$brand-primary-light: $brand-yellow-000;
+$brand-primary-dark: $brand-yellow-200;
+$brand-primary-opaque: rgba($brand-primary, 0.15);
+
+$brand-secondary: $brand-yellow-100;
+$brand-secondary-light: $brand-yellow-000;
+$brand-secondary-dark: $brand-yellow-200;

@@ -1,0 +1,349 @@
+//--------------------
+// SCSS MIXINS
+//--------------------
+
+@mixin padding-container {
+    padding-left: $padding-mobile;
+    padding-right: $padding-mobile;
+
+    @include mq(for-tablet-portrait) {
+        padding-left: $padding-tablet;
+        padding-right: $padding-tablet;
+    }
+
+    @include mq(for-desktop) {
+        padding-left: $padding-desktop;
+        padding-right: $padding-desktop;
+    }
+
+    //@include mq(for-medium-desktop) {
+    //    padding-left: $padding-desktop;
+    //    padding-right: $padding-desktop;
+    //}
+    //
+    //@include mq(for-big-desktop) {
+    //    padding-left: $padding-desktop;
+    //    padding-right: $padding-desktop;
+    //}
+}
+
+@mixin grid-container {
+    padding-left: $padding-mobile;
+    padding-right: $padding-mobile;
+
+    @include mq(for-tablet-portrait) {
+        padding-left: 0;
+        padding-right: 0;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: $padding-tablet 1fr 1fr $padding-tablet;
+    }
+    @include mq(for-desktop) {
+        grid-template-columns: $padding-desktop 1fr 1fr $padding-desktop;
+        grid-template-rows: auto;
+    }
+    @include mq(for-medium-desktop) {
+        grid-template-columns: $padding-mediumdesktop 1fr 1fr $padding-mediumdesktop;
+        grid-template-rows: auto;
+    }
+    @include mq(for-big-desktop) {
+        grid-template-columns: $padding-bigdesktop 1fr 1fr $padding-bigdesktop;
+        grid-template-rows: auto;
+    }
+}
+
+@mixin container {
+    max-width: $width-container;
+    margin: 0 auto;
+    @include padding-container;
+}
+
+// shorthand for media-breakpoint-up, usage like: @include mq2('for-medium-desktop', 'down') { background-color: red; }
+// Inspired by https://medium.freecodecamp.com/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862#.adpufyefv
+
+@mixin mq($name, $updown: 'up', $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min and $updown == 'up'{
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else if $min and $updown == 'down'{
+        @media (max-width: $min - 1px) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}
+
+
+// Custom MQ for max-widths.
+// applies to all widths below the given breakpoint i.e. mq-down(md, (md: 768px)) = max-width: 767px
+
+@mixin mq-down($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (max-width: ($min - 1px)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// make container sizes
+@mixin make-container-max-widths( $max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint, $container-max-width in $max-widths {
+        @include mq($breakpoint, 'up', $breakpoints) {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+@mixin make-breakpoints-names( $max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint, $container-max-width in $max-widths {
+        @include mq($breakpoint, 'up', $breakpoints) {
+            content: 'media:#{$breakpoint}' ;
+        }
+    }
+}
+
+// generate animation $number delay steps (by $value increments) 
+// @include delay(animation, 8, 0.25s);
+
+@mixin delay($rule, $number, $value) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      -webkit-#{$rule}-delay: (#{$i*$value});
+      #{$rule}-delay: (#{$i*$value});
+    }
+  }
+}
+
+// https://codepen.io/giana/pen/RPdLaQ
+@mixin gradient-text($gradient, $bg : 'light') {
+    @supports(mix-blend-mode: lighten) {
+        display: inline-block;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+
+            background: unquote($gradient);
+            pointer-events: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        @if ($bg == 'light') {
+            color: #000;
+            background: #fff;
+            mix-blend-mode: multiply;
+
+            &::before {
+                mix-blend-mode: screen;
+            }
+        } @else {
+            color: #fff;
+            background: #000;
+            mix-blend-mode: lighten;
+
+            &::before {
+                mix-blend-mode: multiply;
+            }
+        }
+    }
+}
+
+// https://codepen.io/exah/pen/Lqyem
+@mixin border-gradient($from, $to, $weight: 0) {
+    $mix-main: mix($from, $to);
+    $mix-sub-from: mix($mix-main, $from);
+    $mix-sub-to: mix($mix-main, $to);
+
+    box-shadow: 0 1px 0 $weight rgba($mix-sub-to, .25),
+    0 -1px 0 $weight rgba($mix-sub-from, .25),
+    1px 0 0 $weight rgba($mix-sub-to, .25),
+    -1px 0 0 $weight  rgba($mix-sub-from, .25),
+    1px -1px 0 $weight rgba($mix-main, .5),
+    -1px 1px 0 $weight rgba($mix-main, .5),
+    1px 1px 0 $weight rgba($to, .75),
+    -1px -1px 0 $weight rgba($from, .75);
+}
+
+
+@mixin textlinks() {
+    a {
+        color: $brand-primary;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid $brand-primary;
+        text-decoration: none;
+
+        &:hover {
+            color: $black;
+            border-color: $black;
+        }
+    }
+}
+
+
+//Hover
+@mixin hover() {
+    &:hover {
+        @content;
+    }
+}
+
+//Hover-Focus
+@mixin hover-focus() {
+    &:hover,
+    &:focus {
+        @content;
+    }
+}
+
+// Only display content to screen readers
+@mixin sr-only() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+@mixin sr-only-focusable() {
+    &:active,
+    &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+}
+
+@mixin font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// Text Hyphenation
+@mixin hyphenate() {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+// Text Truncation
+@mixin truncate() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin coverall() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@mixin scrollable() {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+@mixin button-reset() {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    appearance: none;
+}
+
+@mixin gradient-primary($deg: 180deg) {
+    background-image: linear-gradient(
+        $deg,
+        $brand-primary 0%,
+        $brand-primary-light 100%
+    );
+}
+
+@mixin triangle($color: currentColor) {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: $color transparent transparent transparent;
+    border-width: 50px 25px 0 25px;
+}
+
+@mixin container-breakout() {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+@mixin horizontal-scrollpane() {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin-left: $container-padding-x * -1;
+    margin-right: $container-padding-x * -1;
+    padding-left: $container-padding-x;
+    padding-right: $container-padding-x;
+}
+
+@mixin custom-quotes() {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 32px;
+        background: transparent
+            url('/assets/img/tpl/illustration-quotes.svg') no-repeat 0 0;
+        background-size: contain;
+        position: absolute;
+    }
+
+    &::before {
+        left: -3rem;
+    }
+    &::after {
+        right: -3rem;
+        bottom: -0.5rem;
+        transform: scale(-1, -1);
+    }
+}

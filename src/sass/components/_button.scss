@@ -1,0 +1,197 @@
+// Button Component
+
+/* Base definition */
+%btn {
+    align-items: center;
+    align-content: center;
+    align-self: flex-start;
+    color: $black;
+    cursor: pointer;
+    background-color: transparent;
+    border: 3px solid $black;
+    border-radius: 20em;
+    display: inline-flex;
+    //display: block;
+    font-family: $font-family-body;
+    font-size: 0.8125rem; // = 13px
+    font-weight: $font-weight-normal;
+    justify-content: center;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: 0.7rem 1.7rem 0.6rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transition: $animation-base-timing 0.6s;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-appearance: none;
+
+    a {
+        color: inherit;
+    }
+
+    &:disabled,
+    &.button--disabled {
+        background-color: $gray-300;
+        color: $gray-500;
+    }
+
+    @include hover-focus {
+        color: $white;
+
+        a {
+            color: $white;
+        }
+    }
+}
+
+.button {
+    @extend %btn;
+}
+
+.button .icon {
+    margin-right: 0.5rem;
+}
+
+// Modifier for full-width
+.button.button--block {
+    display: flex;
+    width: 100%;
+
+    & + & {
+        margin-top: 1rem;
+    }
+}
+
+// Modifier for disabled state
+.button.button:disabled,
+.button.button--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+// Modifier for smaller padding
+.button.button--small {
+    padding: 0.25rem 1rem 0.3125rem;
+    border-width: 2px;
+}
+
+// Modifier for larger padding
+.button.button--large {
+    padding: 0.9rem 1.9rem 0.8rem;
+    font-size: 1rem;
+}
+
+// stateful buttons contain spans with different labels.
+// We need to align icons inside them.
+.button--stateful {
+    > span {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+.button--neutral, .button--gray {
+    color: $gray-400;
+    border-color: $gray-400;
+
+    @include hover-focus {
+        color: $white;
+        background: $gray-400;
+
+    }
+}
+
+// Primary  Button
+.button--primary {
+    color: $brand-primary;
+    border-color: $brand-primary;
+
+    @include hover-focus {
+        color: $white;
+        background: $brand-primary;
+    }
+
+}
+
+.button--secondary {
+    color: $brand-secondary;
+    border-color: $brand-secondary;
+
+    @include hover-focus {
+        color: $white;
+        background: $brand-secondary;
+    }
+}
+
+.button--white {
+    color: $brand-secondary;
+    background-color: $white;
+    border-color: $white;
+
+    @include hover-focus {
+        color: $white;
+        background: $brand-secondary;
+    }
+}
+
+// Tertiary Buttons
+.button--tertiary {
+    color: $brand-primary;
+    border-color: transparent;
+    background-color: transparent;
+    transition: background-color 0.25s linear;
+
+    @include hover-focus {
+        color: $brand-primary;
+        background-color: $brand-primary-opaque;
+    }
+
+    &:disabled,
+    &.button--disabled {
+        color: $gray-300;
+        background-color: transparent;
+    }
+}
+
+
+// Button Containers to include arrow messages pointing at the button
+.buttoncontainer {
+    position: relative;
+
+    &--with-arrow {
+        margin-bottom: 2rem;
+    }
+
+    &__arrowtext {
+        display: block;
+        padding-top: 1rem;
+        position: absolute;
+        top: 100%;
+        right: 0.5rem;
+        color: $brand-primary;
+        font-size: 0.875rem;
+        font-weight: 700;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 42px;
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateX(-100%);
+
+            background: transparent
+                url('/static/img/illustration/illustration-arrow-small-orange.svg')
+                no-repeat 0 0;
+            background-size: contain;
+        }
+    }
+}
